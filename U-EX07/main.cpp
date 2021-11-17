@@ -26,24 +26,25 @@ int main() {
         }
         i++;
     }
-    i = 0;
-    while(i < clanum) {
-        srand(time(NULL));
-        int ra = rand() % 10 + 1;
-        srand(time(NULL));
-        int sra = rand() % 26;
-        string tmp = "";
-        tmp.push_back(char(sra+65));
-        for (int j = 1; j < ra; j++) {
-            srand(time(NULL));
-            sra = rand() % 26;
-            tmp.push_back(char(sra+97));
-        }
-        haha[i].name = tmp;
-        i++;
-    }
+    // 亂數取名不好用，等老師的姓名庫
+    // i = 0;
+    // while(i < clanum) {
+    //     srand(time(NULL));
+    //     int ra = rand() % 10 + 1;
+    //     srand(time(NULL));
+    //     int sra = rand() % 26;
+    //     string tmp = "";
+    //     tmp.push_back(char(sra+65));
+    //     for (int j = 1; j < ra; j++) {
+    //         srand(time(NULL));
+    //         sra = rand() % 26;
+    //         tmp.push_back(char(sra+97));
+    //     }
+    //     haha[i].name = tmp;
+    //     i++;
+    // }
     for (i = 0; i < clanum; i++) {
-        cout<< haha[i].num<<" "<<haha[i].name<<endl;
+        cout<< haha[i].num<<endl;
     }
 
 
