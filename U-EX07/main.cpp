@@ -12,8 +12,6 @@ struct stu {
     //  0,  1,  2,  3,   4,         5,    6;
 };
 
-
-
 void gen_class(stu *, int);
 void num_sort(stu *, int);
 void avg_sort(stu *, int);
@@ -138,7 +136,7 @@ void print_all(stu* cla, int clanum) {
 
 void gen_class(stu *cla, int clanum) {
     int i = 0, j = 0;
-    while(i < clanum) {
+    while(i < clanum) { //  亂數給學號
         srand(time(NULL));
         cla[i].num = rand() % 1000 + 1033000;
         for (j = 0; j < i; j++) {
@@ -174,6 +172,7 @@ void gen_class(stu *cla, int clanum) {
             tmp.push_back(char(sra+97));
         }
         cla[i].name = tmp;
+
         // 亂數給成績
         cla[i].score[5] = 0;
         srand(time(NULL));
