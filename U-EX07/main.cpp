@@ -23,7 +23,6 @@ void print_all(stu*, int);
 
 int main() {
 
-    int i = 0;
     int clanum;
     cout<< "請輸入全班人數: ";
     cin >>clanum;
