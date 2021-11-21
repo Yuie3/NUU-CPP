@@ -20,6 +20,7 @@ void search_stu(stu*, int);
 void print_all(stu*, int);
 
 int main() {
+    srand(time(NULL));
 
     int clanum;
     cout<< "請輸入全班人數: ";
@@ -137,7 +138,6 @@ void print_all(stu* cla, int clanum) {
 void gen_class(stu *cla, int clanum) {
     int i = 0, j = 0;
     while(i < clanum) { //  亂數給學號
-        srand(time(NULL));
         cla[i].num = rand() % 1000 + 1033000;
         for (j = 0; j < i; j++) {
             if(cla[j].num == cla[i].num) {
@@ -151,19 +151,15 @@ void gen_class(stu *cla, int clanum) {
     i = 0;
     int chkra = 0;
     while(i < clanum) {
-        // 亂數取名不好用，
-        srand(time(NULL));
         int ra = rand() % 10 + 2;
         if (ra == chkra) {
             continue;
         }
         chkra = ra;
-        srand(time(NULL));
         int sra = rand() % 26;
         string tmp = "";
         tmp.push_back(char(sra+65));
         for (j = 1; j < ra; j++) {
-            srand(time(NULL));
             sra = rand() % 26;
             if (char(sra+97) == tmp[j - 1]) {
                 j--;
@@ -175,10 +171,8 @@ void gen_class(stu *cla, int clanum) {
 
         // 亂數給成績
         cla[i].score[5] = 0;
-        srand(time(NULL));
         cla[i].score[0] = rand() % 101;
         for (j = 1; j < 5; j++) {
-            srand(time(NULL));
             cla[i].score[j] = rand() % 101;
             if (cla[i].score[j] == cla[i].score[j - 1]) j--;
         }
