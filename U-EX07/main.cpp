@@ -31,13 +31,13 @@ int main() {
     char menu = ' ';
     while(menu != 'B') {
         cout<< "1. 產生全班資料(一開始就產生好了所以你打了也沒用)\n"
-            << "2. 依學號排序(記得顯示全班成績)\n"
-            << "3. 依學期成績排序(記得顯示全班成績)\n"    // 6 & 5
-            << "4. 依程設成績排序(記得顯示全班成績)\n"    // 0
-            << "5. 依計概成績排序(記得顯示全班成績)\n"    // 1
-            << "6. 依會計成績排序(記得顯示全班成績)\n"    // 2
-            << "7. 依經濟成績排序(記得顯示全班成績)\n"    // 3
-            << "8. 依微積分成績排序(記得顯示全班成績)\n"  // 4
+            << "2. 依學號排序\n"
+            << "3. 依學期成績排序\n"    // 6 & 5
+            << "4. 依程設成績排序\n"    // 0
+            << "5. 依計概成績排序\n"    // 1
+            << "6. 依會計成績排序\n"    // 2
+            << "7. 依經濟成績排序\n"    // 3
+            << "8. 依微積分成績排序\n"  // 4
             << "9. 顯示全班成績\n"
             << "A. 查詢某生成績\n"
             << "B. 結束程式\n"
@@ -71,6 +71,7 @@ void num_sort(stu *cla, int clanum) {
             }
         }
     }
+    print_all(cla, clanum);
 }
 
 void avg_sort(stu *cla, int clanum) {
@@ -84,6 +85,7 @@ void avg_sort(stu *cla, int clanum) {
             }
         }
     }
+    print_all(cla, clanum);
 }
 
 void score_sort(stu *cla, int clanum, char menu) {
@@ -98,6 +100,7 @@ void score_sort(stu *cla, int clanum, char menu) {
             }
         }
     }
+    print_all(cla, clanum);
 }
 
 void search_stu(stu *cla, int clanum) {
