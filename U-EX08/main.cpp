@@ -6,9 +6,8 @@ int time = 0;
 void Hanoi(int, char, char, char);
 int main() {
     int n;  // 圈圈
-    char A = 'A', B = 'B', C = 'C';
     cin>> n;  // 輸入有幾片圈圈
-    Hanoi(n, A, B, C);
+    Hanoi(n, 'A', 'B', 'C');
     cout<< "最少"<< time /*2^n-1*/<< "次\n";  // 把次數輸出
 }
 
