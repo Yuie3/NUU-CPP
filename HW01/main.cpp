@@ -5,27 +5,22 @@
 using namespace std;
 
 int i, j;
+int p_A = 0, p_B = 0;
+bool com_f = 0, pla_f = 0;
 int com_A[5040][4];
+int com_Q[4];
 void com_Adb();
 void com_Guess();
-void player_Guess(int *);
+void player_Guess();
 
 int main() {
     srand(time(NULL));
-    int com_Q[4];
-    for (i = 0; i < 4; ++i) {
-        com_Q[i] = rand() % 10;
-        for (j = 0; j < i; ++j) {
-            if(com_Q[i] == com_Q[j]) {
-                --i;
-                break;
-            }
-        }
-    }
     com_Adb();
-    com_Guess();
-    player_Guess(com_Q);
 
+    while (1) {
+        com_Guess();
+        player_Guess();
+    }
 
     for (i = 0; i < 4; ++i) {
         cout<< com_Q[i];
@@ -33,19 +28,41 @@ int main() {
     return 0;
 }
 
+
 void com_Guess() {
 
 }
 
-void player_Guess(int *com_Q) {
+void player_Guess() {
     int inp;
-    int pla_A[4];
+    int p_Ans[4];
+    p_A = p_B = 0;
     cout<< "請輸入猜測的數字: ";
     cin >>inp;
-    pla_A[0] = inp/1000 % 10;
-    pla_A[1] = inp/100 % 10;
-    pla_A[2] = inp/10 % 10;
-    pla_A[3] = inp % 10;
+    p_Ans[0] = inp/1000 % 10;
+    p_Ans[1] = inp/100 % 10;
+    p_Ans[2] = inp/10 % 10;
+    p_Ans[3] = inp % 10;
+    for (i = 0; i < 4; ++i) {
+        for (j = 0; j < 4; ++j) {
+            if (p_Ans[i] == p_Ans[j])
+            {
+                cout<< "你輸入的數字有重複喔>_< \n";
+                return;
+            }
+        }
+    }
+    for (i = 0; i < 4; ++i) {
+        if(p_Ans[i] == com_Q[i]) {
+            p_A++;
+            continue;
+        }
+        for (j = 0; j < 4; ++j) {
+            if(p_Ans[i] == com_Q[j]) p_B++;
+        }
+    }
+    if(p_A == 4) pla_f == true;
+    cout<< "A: "<< p_A<< "B: "<< p_B;
 }
 
 void com_Adb() {  // 產生所有可能的答案
@@ -69,6 +86,17 @@ void com_Adb() {  // 產生所有可能的答案
             com_A[tmp][2] = n_10;
             com_A[tmp][3] = n_1;
             tmp++;
+        }
+    }
+
+    // 電腦出的題目
+    for (i = 0; i < 4; ++i) {
+        com_Q[i] = rand() % 10;
+        for (j = 0; j < i; ++j) {
+            if(com_Q[i] == com_Q[j]) {
+                --i;
+                break;
+            }
         }
     }
 }
