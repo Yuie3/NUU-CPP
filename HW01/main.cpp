@@ -6,7 +6,7 @@ using namespace std;
 
 int i, j;
 int p_A = 0, p_B = 0;
-bool com_f = 0, pla_f = 0;
+bool com_f = 0, pla_f = 0, lie = 0;
 int com_A[5040][4], ans_Num = 5040;
 int com_Q[4];
 void com_Adb();
@@ -17,7 +17,7 @@ int main() {
     srand(time(NULL));
     com_Adb();
 
-    while (1) {
+    while (!lie or (!com_f and !pla_f)) {
         if(!com_f) com_Guess();
         if(!pla_f) player_Guess();
     }
@@ -47,6 +47,7 @@ void com_Guess() {
         return;
     } else if(ans_Num == 1) {
         com_f = true;
+        lie = true;
         cout<< "再騙啊";
         return;
     }
@@ -82,7 +83,7 @@ void player_Guess() {
     p_Ans[2] = inp/10 % 10;
     p_Ans[3] = inp % 10;
     for (i = 0; i < 4; ++i) {
-        for (j = 0; j < 4; ++j) {
+        for (j = i+1; j < 4; ++j) {
             if (p_Ans[i] == p_Ans[j])
             {
                 cout<< "你輸入的數字有重複喔>_< \n";
@@ -126,6 +127,7 @@ void com_Adb() {  // 產生所有可能的答案
             tmp++;
         }
     }
+    cout<< "tmp: "<< tmp;
 
     // 電腦出的題目
     for (i = 0; i < 4; ++i) {
