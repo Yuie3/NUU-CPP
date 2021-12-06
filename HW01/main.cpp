@@ -37,6 +37,7 @@ void again() {
     else cout<< "看起來你比電腦還要勇喔\n";
     player_rank.push_back(pT);
     sort(player_rank.begin(), player_rank.end());
+    if(playT > 3) playT = 3;
     cout<< "第1名: "<< player_rank[0]<< endl;
     for(i = 1; i <= playT; ++i) {
         cout<< "第"<< i+1<< "名: "<< player_rank[i]<< endl;
@@ -71,7 +72,7 @@ void com_Guess() {
         cout<< "你認真???\n";
         return;
     }
-    cT++;
+    cT++; // 讓電腦猜的次數加一
     if(c_A == 4) {
         com_f = true;
         end_game -= 1;
@@ -108,7 +109,7 @@ void player_Guess() {
     int p_A = 0, p_B = 0;
     cout<< "請輸入猜測的數字: ";
     cin >>inp;
-    if(inp < 123 or inp > 9876) {
+    if(inp <= 123 or inp >= 9876) {
         cout<< "你認真???\n";
         return;
     }
