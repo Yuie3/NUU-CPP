@@ -38,7 +38,7 @@ void again() {
     player_rank.push_back(pT);
     sort(player_rank.begin(), player_rank.end());
     cout<< "第1名: "<< player_rank[0]<< endl;
-    for(i = 1; i < playT; ++i) {
+    for(i = 1; i <= playT; ++i) {
         cout<< "第"<< i+1<< "名: "<< player_rank[i]<< endl;
     }
     playT++;
