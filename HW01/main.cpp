@@ -7,7 +7,7 @@ using namespace std;
 int i, j;
 int p_A = 0, p_B = 0;
 bool com_f = 0, pla_f = 0;
-int com_A[5040][4];
+int com_A[5040][4], ans_Num = 5040;
 int com_Q[4];
 void com_Adb();
 void com_Guess();
@@ -18,8 +18,8 @@ int main() {
     com_Adb();
 
     while (1) {
-        com_Guess();
-        player_Guess();
+        if(!com_f) com_Guess();
+        if(!pla_f) player_Guess();
     }
 
     for (i = 0; i < 4; ++i) {
@@ -30,7 +30,45 @@ int main() {
 
 
 void com_Guess() {
-
+    int c_A, c_B;  // 玩家輸入總共有幾個A幾個B
+    int c_cA, c_cB;  // 電腦來檢查答案用
+    int time = 0;
+    int ran = rand() % ans_Num;
+    for (i = 0; i < 4; ++i) {
+        cout<< com_A[ran][i];
+    }
+    cout<< "\nA: ";
+    cin >>c_A;
+    cout<< "\nB: ";
+    cin >>c_B;
+    if(c_A == 4) {
+        com_f = true;
+        cout<< "電腦超勇的拉";
+        return;
+    } else if(ans_Num == 1) {
+        com_f = true;
+        cout<< "再騙啊";
+        return;
+    }
+    for (i = 0; i < ans_Num; ++i) {
+        c_cA = c_cB = 0;
+        for (j = 0; j < 4; ++j) {
+            if(com_A[ran][j] == com_A[i][j]) {
+                c_cA++;
+                continue;
+            }
+            for (int k = 0; k < 4; ++k) {
+                if(com_A[ran][j] == com_A[i][k]) c_cB++;
+            }
+        }
+        if (c_A == c_cA and c_B == c_cB) {
+            for (j = 0; j < 4; ++j) {
+                com_A[time][j] = com_A[i][j];
+                time++;
+            }
+        }
+    }
+    ans_Num = time;
 }
 
 void player_Guess() {
