@@ -68,7 +68,7 @@ void com_Guess() {
     cin >>c_A;
     cout<< "B: ";
     cin >>c_B;
-    if(c_A + c_B > 4) {
+    if(c_A + c_B > 4 or c_A < 0 or c_B < 0) {
         cout<< "你認真???\n";
         return;
     }
