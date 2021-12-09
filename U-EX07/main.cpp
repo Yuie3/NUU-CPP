@@ -16,8 +16,8 @@ void gen_class(stu *, int);
 void num_sort(stu *, int);
 void avg_sort(stu *, int);
 void score_sort(stu *, int, char);
-void search_stu(stu*, int);
-void print_all(stu*, int);
+void search_stu(stu *, int);
+void print_all(stu *, int);
 
 int main() {
     srand(time(NULL));

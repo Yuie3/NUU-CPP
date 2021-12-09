@@ -46,12 +46,12 @@ int main () {
         return 0;
     }
 
-    int mapp[h][w];  // 地圖本人
-    int opmap[h][w];  // 記地圖誰被開過了
+    int main_map[h][w];  // 地圖本人
+    int op_map[h][w];  // 記地圖誰被開過了
     for (int i = 0; i < h; i++) {
         for (int j = 0; j < w; j++) {
-            mapp[i][j] = 0;
-            opmap[i][j] = 1;
+            main_map[i][j] = 0;
+            op_map[i][j] = 1;
         }
     }
     int pt = p;
@@ -60,8 +60,8 @@ int main () {
         int ph = rand() % h;
         srand( time(NULL) );
         int pw = rand() % w;
-        if (!mapp[ph][pw]) {
-            mapp[ph][pw] = 9;
+        if (!main_map[ph][pw]) {
+            main_map[ph][pw] = 9;
             pt--;
         }
     } while(pt);
@@ -77,7 +77,7 @@ int main () {
         for (int i = 0; i < h; i++) {
             cout<< setw(4)<< i+1<< "|";
             for (int j = 0; j < w; j++) {
-                if (!opmap[i][j]) cout<< setw(4)<< mapp[i][j];  // 被開過了就顯示
+                if (!op_map[i][j]) cout<< setw(4)<< main_map[i][j];  // 被開過了就顯示
                 else cout<< setw(4)<< "";  // 沒被開過就謝謝再聯絡
             }
             cout<< endl;
@@ -93,18 +93,18 @@ int main () {
             cout<< "沒有這一格啊，哭啊"<< endl;
             continue;
         }
-        if (!opmap[oph][opw]) {
+        if (!op_map[oph][opw]) {
             system("cls");
             cout<< "踩過了拉 OAO, 你還好嗎?"<< endl;
             continue;
         }
-        if (mapp[oph][opw]) {
+        if (main_map[oph][opw]) {
             cout<< "炸!!!"<< endl;
             return 0;
         }
 
         pt++;
-        opmap[oph][opw] = 0;
+        op_map[oph][opw] = 0;
         system("cls");
     }
 

@@ -10,9 +10,9 @@ int main() {
     cout<< "請輸入a[m][n]和b[n][p]的m, n, p: ";
     cin >>m >>n >>p;
 
-    vector<vector<int>> a;
+    vector< vector<int> > a;
 
-    //int a[100][100], b[100][100], c[100][100];
+    int b[100][100], c[100][100];
     int aT[100][100];
 
     int i, j;
