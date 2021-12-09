@@ -32,9 +32,9 @@ int main() {
 }
 
 void again() {
-    if(cT>pT) cout<< "看來還是電腦比較勇喔\n";
-    else if(cT<pT) cout<< "看來你跟電腦一樣勇喔\n";
-    else cout<< "看起來你比電腦還要勇喔\n";
+    if(cT<pT) cout<< "看來還是電腦比較勇喔\n";
+    else if(cT>pT) cout<< "看起來你比電腦還要勇喔\n";
+    else cout<< "看來你跟電腦一樣勇喔\n";
     player_rank.push_back(pT);
     sort(player_rank.begin(), player_rank.end());
     if(playT > 3) playT = 3;
