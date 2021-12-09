@@ -109,7 +109,7 @@ void player_Guess() {
     int p_A = 0, p_B = 0;
     cout<< "請輸入猜測的數字: ";
     cin >>inp;
-    if(inp <= 123 or inp >= 9876) {
+    if(inp < 123 or inp > 9876) {
         cout<< "你認真???\n";
         return;
     }
